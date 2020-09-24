@@ -1,4 +1,5 @@
 const express = require('express')
+const cors = require('cors')
 require('dotenv').config()
 
 
@@ -7,6 +8,8 @@ const callbackController = require('./controllers/callbackController')
 const refreshTokenController = require('./controllers/refreshTokenController')
 
 const app = express()
+
+app.use(cors())
 
 app.get('/login', loginController)
 app.get('/callback', callbackController)
