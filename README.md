@@ -1,37 +1,67 @@
-# OAuth bridge template
+# Spotifood-bridge 🌉
 
-This service logs in to Spotify and redirects the user to a given frontend application with a valid access_token as a parameter in the url.
+Spotifood bridge to get login user token from spotify API.
 
-## Development mode
+## First things first
 
-In development mode, it assumes you are running the frontend on localhost:3000, but the server itself will be running on localhost:8888.
+- Login to your account on [Spotify Developer Dashboard](https://developer.spotify.com/dashboard/)
+- Create a new App
+- Now you have your a **Client ID** and **Client Secret**
 
-In order to start developing, register a Spotify Application here:
-https://developer.spotify.com/my-applications
+## Getting started
+In the project directory, you can run:
 
-On that page, add http://localhost:8888 as a callback url (don't forget to hit save at the bottom of the page)
-
-Write the below commands in your terminal (replacing XXXX AND YYYY with your acutal client id and secret from the page where you registered your application)
-
-```
-export SPOTIFY_CLIENT_ID=XXXX
-export SPOTIFY_CLIENT_SECRET=YYYY
-npm start
+```console
+cp .env.sample .env
 ```
 
-Then go to http://localhost:8888/login in your browser. This will initiate the login flow and finally redirect to http://localhost:3000?access_token=ZZZZZ where ZZZZZ is a valid access token that you can use to do operations in the Spotify API.
+Atribute to **SPOTIFY_CLIENT_ID** and **SPOTIFY_CLIENT_SECRET** variables in `.env` file the **Client Id** and **Client Secret** that you got from spotify dashboard.
 
-## Deploying to production
+---
 
-This template is indended to be deployed on Heroku. After installing the heroku CLI tools you can run the below commands in the same directory as server.js(replacing abc123, cba456, mybackend and myfrontend with your actual stuff - the below example assume that you already have your frontend running on http://myfrontend.herokuapp.com.
+### Running with docker
 
-```
-heroku create mybackend
-heroku config:set SPOTIFY_CLIENT_ID=abc123
-heroku config:set SPOTIFY_CLIENT_SECRET=cba456
-heroku config:set REDIRECT_URI=https://mybackend.herokuapp.com/callback
-heroku config:set FRONTEND_URI=https://myfrontend.herokuapp.com
-git push heroku master
+Make sure you have [docker](https://docs.docker.com/get-docker/) and [docker-compose](https://docs.docker.com/compose/install/) already installed in your machine.
+
+```console
+docker-compose up --build
 ```
 
-You should now be able to go to http://mybackend.herokuapp.com/login and it will eventually redirect to http://myfrontend.herokuapp.com?access_token=ZZZZZwhere ZZZZZ is a valid access token that you can use to do operations in the Spotify API.
+To run the app inside a docker container.
+
+---
+
+### Running with yarn
+
+Make sure you have [node](https://nodejs.org/en/download/) and [yarn](https://classic.yarnpkg.com/en/docs/install) already installed in your machine.
+
+```console
+yarn
+```
+
+To install all the dependencies listed in package.json
+
+```console
+yarn start
+```
+or (with [nodemon](https://www.npmjs.com/package/nodemon))
+```console
+yarn dev
+```
+
+Runs the app in the development mode.<br />
+Now you are ready to run the [Spotifood App](https://github.com/antoniomesquita09/ifood-frontend-test).
+
+---
+
+### Deployed version
+
+You can see the Spotifood website production version on:
+[https://antonio-spotifood.netlify.app/](https://antonio-spotifood.netlify.app/)<br />
+The Spotifood-bridge is also deployed to help users to login on Spotifood, the URL is:
+[https://login-bridge.herokuapp.com/](https://login-bridge.herokuapp.com/)<br />
+
+And for your best experience you wont't see that URL during your navigation in Spotifood 😋.
+
+Author: Antonio Mesquita Junior<br />
+Hope you enjoy ☺️

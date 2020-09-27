@@ -1,0 +1,13 @@
+version: '3.4'
+services:
+  spotifood-bridge:
+    stdin_open: true
+    build:
+      context: .
+      target: development
+    volumes:
+      - ./src:/spotifood-bridge/src
+    ports:
+      - $PORT:$PORT
+    env_file:
+      - .env
