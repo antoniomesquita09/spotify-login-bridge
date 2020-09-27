@@ -8,7 +8,7 @@ Spotifood bridge to get login user token from spotify API.
 - Create a new App
 - Now you have your a **Client ID** and **Client Secret**
 - But first, click on **Edit Settings**
-- Add **http://localhost:8888/callback** to your *Redirect URIs* and save it.
+- Add `http://localhost:8888/callback` to your **Redirect URIs** and save it.
 
 ## Getting started
 In the project directory, you can run:
